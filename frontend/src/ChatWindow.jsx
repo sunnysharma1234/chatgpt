@@ -9,6 +9,8 @@ function ChatWindow() {
     const [loading, setLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
+    const API_BASE_URL = import.meta.env.BASE_URL;
+
     const getReply = async () => {
         setLoading(true);
         setNewChat(false);
@@ -26,7 +28,7 @@ function ChatWindow() {
         };
 
         try {
-            const response = await fetch("http://localhost:8080/api/chat", options);
+            const response = await fetch(`${API_BASE_URL}/api/chat`, options);
             const res = await response.json();
             console.log(res);
             setReply(res.reply);
